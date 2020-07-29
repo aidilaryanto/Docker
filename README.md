@@ -9,7 +9,7 @@ docker pull aidilaryanto/projectdils:slim-buster
 ```
 
 # Build Status
-<a href="https://github.com/aidilaryanto/Docker/actions?query=branch%3Aslim-buster"> <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/aidilaryanto/Docker/Docker%20Build/slim-buster?color=blue&label=Docker%20build&logo=github%20actions&logoColor=blue&style=for-the-badge" /></a>
+<img alt="Travis (.com) branch" src="https://img.shields.io/travis/com/aidilaryanto/Docker/slim-buster?color=green&label=Build%20Status&logo=travis&logoColor=green&style=for-the-badge">
 
 ## Thanks To
 * [AnggaR96s](https://github.com/AnggaR96s)
