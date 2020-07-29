@@ -1,0 +1,26 @@
+name: Docker Build
+on:
+  push:
+    branches:
+      - slim-buster
+  schedule:
+    - cron: '0 0 * * *' # Auto build Docker at midnight
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and Publish to Dockerhub
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: ${{ secrets.DOCKER }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: ${{ secrets.TAGS2 }}
+        
+    - name: send telegram message
+      run: |
+          function sendTG() {
+          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendmessage" --data "text=${*}&chat_id=${{ secrets.TELEGRAM_TO }}&parse_mode=Markdown"
+          }
+          sendTG "\`Images has been successfully pushed to Docker\` %0ATAGS: [Slim-Buster](${{ secrets.LINK }})" &> /dev/null
